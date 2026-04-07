@@ -1,4 +1,4 @@
-# 🐶 Pet Care Reminder
+# 🐶 Pet Care Tracker
 
 Eine mobile Progressive Web App (PWA), die Haustierbesitzer:innen dabei unterstützt, die Pflege ihrer Tiere zu organisieren.
 
