@@ -1,5 +1,6 @@
 
 import Navigation from './Navigation';
+import TastFeed from './TaskFeed';
 
 function App() {
 
@@ -7,7 +8,8 @@ function App() {
   return (
     <>
     <main className="container-fluid">
-    <Navigation></Navigation>
+      <Navigation></Navigation>
+      <TastFeed></TastFeed>
     </main>
       
     </>

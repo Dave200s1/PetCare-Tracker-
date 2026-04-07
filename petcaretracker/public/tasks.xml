@@ -1,0 +1,12 @@
+<tasks>
+  <task>
+    <time>14:00</time>
+    <title>Nachts gassie gehen</title>
+    <pet>Max</pet>
+  </task>
+  <task>
+    <time>18:00</time>
+    <title>Füttern</title>
+    <pet>Luna</pet>
+  </task>
+</tasks>
