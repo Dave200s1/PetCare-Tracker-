@@ -2,13 +2,14 @@
 
 Eine mobile Progressive Web App (PWA), die Haustierbesitzer:innen dabei unterstützt, die Pflege ihrer Tiere zu organisieren.
 
+# Das Folgende Projekt befindet sich in der Bearbeitung !
 
 ![npm bundle size (version)](https://img.shields.io/badge/version-0.0.1-darkblue)  ![npm bundle size (version)](https://img.shields.io/badge/techstack-React-lightblue)
 ---
 
 ## 📌 Überblick
 
-Pet Care Reminder ist eine Webanwendung, die Nutzer:innen bei der Organisation von täglichen und langfristigen Aufgaben rund um ihre Haustiere unterstützt. Es können Haustiere angelegt sowie Fütterungszeiten, Tierarzttermine und Impfungen geplant werden.
+Pet Care Tracker ist eine Webanwendung, die Nutzer:innen bei der Organisation von täglichen und langfristigen Aufgaben rund um ihre Haustiere unterstützt. Es können Haustiere angelegt sowie Fütterungszeiten, Tierarzttermine und Impfungen geplant werden.
 
 Die Anwendung erinnert über Benachrichtigungen an anstehende Aufgaben und ist so konzipiert, dass sie auch offline funktioniert. Daten werden lokal gespeichert und bei bestehender Internetverbindung mit einer Datenbank synchronisiert.
 
@@ -65,14 +66,14 @@ Nutzer:innen können:
 ## 🚀 Installation
 
 ```bash
-# Clone repository
+# Clone Repository
 git clone https://github.com/Dave200s1/PetCare-Tracker-.git
 
-# Navigate into project folder
+# Navigiere in den Projektordner
 cd pet-care-reminder
 
-# Install dependencies
+# Dependencies installieren
 npm install
 
-# Start development server
+# Development server starten
 npm run dev
