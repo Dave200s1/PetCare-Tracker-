@@ -1,0 +1,14 @@
+{
+    "pets": [
+        {
+            "name" : "Max",
+            "image" : "/imgs/dog1.webp",
+            "type" : "dog"
+        },
+        {
+            "name" : "Luna",
+            "image" : "/imgs/cat1.webp",
+            "type": "cat"
+        }
+    ]
+}

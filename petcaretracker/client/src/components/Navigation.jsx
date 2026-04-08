@@ -57,9 +57,9 @@ function Navigation (){
                 <li><strong>Pet tracker</strong></li>
             </ul>
             <ul>
-                <li><a href="#"className="pico-color-indigo-600">Home</a></li>
-                <li><a href="#"className="pico-color-indigo-600">Add</a></li>
-                <li><a href="#"className="pico-color-indigo-600">Settings</a></li>
+                <li><a href="#"className="pico-color-indigo-600">Start</a></li>
+                <li><a href="#"className="pico-color-indigo-600">Neu</a></li>
+                <li><a href="#"className="pico-color-indigo-600">Einstellungen</a></li>
             </ul>
         </nav>
       
@@ -69,15 +69,15 @@ function Navigation (){
             <ul>
                 <li>
                     <House></House>
-                    <a href="#" className="pico-color-indigo-600">Home</a>
+                    <a href="#" className="pico-color-indigo-600">Start</a>
                 </li>
                 <li>
                     <SquarePlus></SquarePlus>
-                    <a href="#" className="pico-color-indigo-600">Add</a>
+                    <a href="#" className="pico-color-indigo-600">Neu</a>
                 </li>
                 <li>
                     <Settings></Settings>
-                    <a href="#" className="pico-color-indigo-600">Settings</a>
+                    <a href="#" className="pico-color-indigo-600">Einstellungen</a>
                 </li>
             </ul>
         </nav>
