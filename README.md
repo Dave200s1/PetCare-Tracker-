@@ -15,6 +15,8 @@ Die Anwendung erinnert über Benachrichtigungen an anstehende Aufgaben und ist s
 
 ---
 
+![Alt text](Pic1.png "Optional title")
+
 ## ✨ Funktionen
 
 - 🐾 Haustiere anlegen und verwalten  
