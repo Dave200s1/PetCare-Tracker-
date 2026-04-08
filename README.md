@@ -2,7 +2,7 @@
 
 Eine mobile Progressive Web App (PWA), die Haustierbesitzer:innen dabei unterstützt, die Pflege ihrer Tiere zu organisieren.
 
-# Das Folgende Projekt befindet sich in der Bearbeitung !
+# Das folgende Projekt befindet sich in der Bearbeitung !
 
 ![npm bundle size (version)](https://img.shields.io/badge/version-0.0.1-darkblue)  ![npm bundle size (version)](https://img.shields.io/badge/techstack-React-lightblue)
 ---
