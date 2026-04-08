@@ -18,6 +18,7 @@ function App() {
       
       <Navigation></Navigation>
     </main>
+      
       <Dashboard></Dashboard>
     </>
   )
