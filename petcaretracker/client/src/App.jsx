@@ -1,17 +1,24 @@
 
-import Navigation from './Navigation';
-import TastFeed from './TaskFeed';
+import Navigation from './components/Navigation';
+import TastFeed from './components/TaskFeed';
+import Dashboard from './pages/Dashboard';
 
 function App() {
 
+  /**
+   *     <main className="container-fluid">
+      <Navigation></Navigation>
+      <TastFeed></TastFeed>
+    </main>
+   */
 
   return (
     <>
     <main className="container-fluid">
-      <Navigation></Navigation>
-      <TastFeed></TastFeed>
-    </main>
       
+      <Navigation></Navigation>
+    </main>
+      <Dashboard></Dashboard>
     </>
   )
 }

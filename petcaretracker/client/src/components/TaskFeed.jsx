@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react"
-
+import { Footprints } from "lucide-react";
 
 function TastFeed (){
     const [tasks,setTasks] = useState([]);
@@ -27,7 +27,7 @@ function TastFeed (){
         <>
         <section className="container">
             <h3>
-            Bevorstehende Tasks <small>({tasks.length} Total)</small>
+            Bevorstehende Tasks <small>({tasks.length} gesamt)</small>
             </h3>
         
 
@@ -35,6 +35,7 @@ function TastFeed (){
             <article key={index}>
             <strong>{task.time}</strong>
             <p>{task.title}</p>
+            <Footprints></Footprints>
             <small>@ {task.pet}</small>
             </article>
         ))}
