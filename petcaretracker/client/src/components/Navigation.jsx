@@ -1,6 +1,8 @@
 import {House,SquarePlus, Settings} from 'lucide-react'
 
-function Navigation (){
+
+
+function Navigation ({setPage}){
 
     return(
         <>
@@ -57,8 +59,8 @@ function Navigation (){
                 <li><strong>Pet tracker</strong></li>
             </ul>
             <ul>
-                <li><a href="#"className="pico-color-indigo-600">Start</a></li>
-                <li><a href="#"className="pico-color-indigo-600">Neu</a></li>
+                <li><a href="#" onClick={()=> setPage("dashboard")} className="pico-color-indigo-600">Start</a></li>
+                <li><a href="#" onClick={()=> setPage("reminder")} className="pico-color-indigo-600">Neu</a></li>
                 <li><a href="#"className="pico-color-indigo-600">Einstellungen</a></li>
             </ul>
         </nav>
@@ -69,11 +71,17 @@ function Navigation (){
             <ul>
                 <li>
                     <House></House>
-                    <a href="#" className="pico-color-indigo-600">Start</a>
+                    <a href="#" onClick={(e)=>{
+                        e.preventDefault();
+                        setPage("dashboard");
+                    }} className="pico-color-indigo-600">Start</a>
                 </li>
                 <li>
                     <SquarePlus></SquarePlus>
-                    <a href="#" className="pico-color-indigo-600">Neu</a>
+                    <a href="#" onClick={(e)=>{
+                        e.preventDefault();
+                        setPage("reminder")
+                    }} className="pico-color-indigo-600">Neu</a>
                 </li>
                 <li>
                     <Settings></Settings>
