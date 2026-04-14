@@ -34,18 +34,18 @@ function Languages (){
           background: none;
           border: none;
           cursor: pointer;
-          color: #38bdf8; /* sky blue text */
+          color: #3b82f6; 
         }
 
         .language-trigger span {
-          color: #38bdf8;
+          color: #3b82f6;
           font-weight: 500;
         }
 
         .language-dropdown {
           position: absolute;
           top: 120%;
-          left: 50%;
+          left: 80%;
           transform: translateX(-50%);
           background: white;
           border-radius: 16px;
@@ -53,7 +53,7 @@ function Languages (){
           width: 220px;
           box-shadow: 0 10px 25px rgba(0,0,0,0.1);
           z-index: 100;
-          background: #38bdf8;
+          background: #3b82f6;
         }
 
         .language-dropdown::before {
