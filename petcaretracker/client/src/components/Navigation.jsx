@@ -61,7 +61,7 @@ function Navigation ({setPage}){
             <ul>
                 <li><a href="#" onClick={()=> setPage("dashboard")} className="pico-color-indigo-600">Start</a></li>
                 <li><a href="#" onClick={()=> setPage("reminder")} className="pico-color-indigo-600">Neu</a></li>
-                <li><a href="#"className="pico-color-indigo-600">Einstellungen</a></li>
+                <li><a href="#" onClick={()=> setPage("settings")} className="pico-color-indigo-600">Einstellungen</a></li>
             </ul>
         </nav>
       
@@ -80,12 +80,15 @@ function Navigation ({setPage}){
                     <SquarePlus></SquarePlus>
                     <a href="#" onClick={(e)=>{
                         e.preventDefault();
-                        setPage("reminder")
+                        setPage("reminder");
                     }} className="pico-color-indigo-600">Neu</a>
                 </li>
                 <li>
                     <Settings></Settings>
-                    <a href="#" className="pico-color-indigo-600">Einstellungen</a>
+                    <a href="#" onClick={(e)=>{
+                        e.preventDefault();
+                        setPage("settings");
+                    }} className="pico-color-indigo-600">Einstellungen</a>
                 </li>
             </ul>
         </nav>

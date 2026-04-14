@@ -4,6 +4,7 @@ import Navigation from './components/Navigation';
 import TastFeed from './components/TaskFeed';
 import Dashboard from './pages/Dashboard';
 import Reminder from './pages/Reminder';
+import Setting from './pages/Setting';
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
       <Navigation setPage={setPage}/>
         {page === "dashboard" && <Dashboard/>}
         {page === "reminder" && <Reminder/>}
-
+        {page === "settings" && <Setting/>}
+      
     </main>
       
       
