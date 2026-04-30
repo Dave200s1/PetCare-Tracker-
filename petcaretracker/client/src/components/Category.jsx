@@ -4,7 +4,7 @@ import { Utensils, Footprints, HeartPlus, Scissors } from "lucide-react"
 
 function Category(){
     const [active, setActive] = useState("feeding");
-    
+
     const categories = [
         {id: "feeding", lebel: "Fütern", icon: <Utensils></Utensils>},
         {id: "walking", lebel: "Gassie gehen", icon: <Footprints></Footprints>},
@@ -31,7 +31,7 @@ function Category(){
                 align-items: center;
                 justify-content: center;
 
-                padding: 1.5rem;
+                padding: 0.45rem;
                 border-radius: 16px;
 
                 background: #3b82f6;
@@ -66,13 +66,13 @@ function Category(){
             }
 
             .category-card.active .category-icon {
-                background: #010214; 
+                background: #010214;
                 color: white;
             } `}
             </style>
 
             <section className="category">
-                <h2>Was kommt als nächstes ?</h2>
+                <h3>Was kommt als nächstes ?</h3>
                 <div className="category-grid">
                     {categories.map((cat)=>(
                         <button
@@ -92,7 +92,7 @@ function Category(){
                     ))}
                 </div>
 
-            </section>        
+            </section>
         </>
     )
 
