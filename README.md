@@ -17,15 +17,17 @@ Die Anwendung erinnert über Benachrichtigungen an anstehende Aufgaben und ist s
 
 ![Alt text](Pic1.png "Optional title")
 
+![Alt text](Pic2.png "Optional title")
+
 ## ✨ Funktionen
 
-- 🐾 Haustiere anlegen und verwalten  
-- ⏰ Fütterungszeiten planen  
-- 💉 Impfungen und Tierarzttermine verwalten  
-- 🔔 Erinnerungen für anstehende Aufgaben erhalten  
-- 📶 Offline-Funktionalität mit lokaler Datenspeicherung  
-- ☁️ Synchronisation mit einer Datenbank  
-- 📱 Installierbar als mobile App (PWA)  
+- 🐾 Haustiere anlegen und verwalten
+- ⏰ Fütterungszeiten planen
+- 💉 Impfungen und Tierarzttermine verwalten
+- 🔔 Erinnerungen für anstehende Aufgaben erhalten
+- 📶 Offline-Funktionalität mit lokaler Datenspeicherung
+- ☁️ Synchronisation mit einer Datenbank
+- 📱 Installierbar als mobile App (PWA)
 
 ---
 
@@ -33,36 +35,36 @@ Die Anwendung erinnert über Benachrichtigungen an anstehende Aufgaben und ist s
 
 Ziel des Projekts ist die Entwicklung einer mobilfreundlichen Webanwendung, die zentrale Konzepte von Progressive Web Apps demonstriert, darunter:
 
-- Offline-Fähigkeit  
-- Push-Benachrichtigungen  
-- Responsives Design  
-- Integration mobiler Gerätefunktionen  
+- Offline-Fähigkeit
+- Push-Benachrichtigungen
+- Responsives Design
+- Integration mobiler Gerätefunktionen
 
 ---
 
 ## 🧩 Kernfunktionalität
 
 Nutzer:innen können:
-- mehrere Haustiere anlegen und verwalten  
-- Erinnerungen für verschiedene Aufgaben erstellen  
-- anstehende Termine und Aufgaben einsehen  
-- Benachrichtigungen für wichtige Aktivitäten erhalten  
+- mehrere Haustiere anlegen und verwalten
+- Erinnerungen für verschiedene Aufgaben erstellen
+- anstehende Termine und Aufgaben einsehen
+- Benachrichtigungen für wichtige Aktivitäten erhalten
 
 ---
 
 ## 📍 Optionale Funktionen
 
-- 🗺️ Anzeige von Tierarztpraxen in der Nähe (Standortbasiert)  
-- 🐕 Tracking von Spaziergängen mittels Geolocation  
-- 📊 Erweiterung um einfaches Health-Tracking  
+- 🗺️ Anzeige von Tierarztpraxen in der Nähe (Standortbasiert)
+- 🐕 Tracking von Spaziergängen mittels Geolocation
+- 📊 Erweiterung um einfaches Health-Tracking
 
 ---
 
 ## 🛠️ Technologie-Stack
 
-- Frontend: React  
-- Backend: Node.js mit Express  
-- Datenbank: MongoDB  
+- Frontend: React
+- Backend: Node.js mit Express
+- Datenbank: MongoDB
 
 ---
 ## 🚀 Installation

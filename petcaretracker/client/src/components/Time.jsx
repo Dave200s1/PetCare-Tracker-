@@ -1,17 +1,20 @@
-import { useState } from "react"
-import { Clock, Moon, Calendar1 } from "lucide-react"
+import { useState } from 'react'
+import { Clock, Moon, Calendar1 } from 'lucide-react'
+//import { Calendar } from 'jsuites/react'
+//import 'jsuites/dist/jsuites.css'
+//import { useRef } from 'react'
 
-function Time (){
-     const [active, setActive] = useState("tonight");
+function Time() {
+  const [active, setActive] = useState('tonight')
 
-    const desiredTime = [
-        {id: "inOneHour", label: "in 1 Std", icon: <Clock></Clock>},
-        {id: "tonight", label: "heute nacht", icon: <Moon></Moon>},
-        {id: "tomorrow", label: "morgen", icon: <Calendar1></Calendar1>}
-    ]
-    return(
-        <>
-        <style>{`
+  const desiredTime = [
+    { id: 'inOneHour', label: 'in 1 Std', icon: <Clock></Clock> },
+    { id: 'tonight', label: 'heute nacht', icon: <Moon></Moon> },
+    { id: 'tomorrow', label: 'morgen', icon: <Calendar1></Calendar1> },
+  ]
+  return (
+    <>
+      <style>{`
         .timeOfTask h3 {
           margin-bottom: 1rem;
         }
@@ -41,35 +44,24 @@ function Time (){
           color: white;
         }
 
-
-
-
-
-      `}</style>
-            <section className="timeOfTask">
-                <h3>Wann ?</h3>
-                <div className="timeOfTask-list">
-                    {desiredTime.map((t)=>(
-                        <button
-                            key={t.id}
-                            className={
-                                active === t.id
-                                ? "time-btn active"
-                                : "time-btn"
-                            }
-                            onClick={()=> setActive(t.id)}
-                        >
-                            <div className="timeIcon">
-                                {t.icon}
-                            </div>
-                            <span>{t.label}</span>
-                        </button>
-                    ))}
-
-                </div>
-            </section>
-        </>
-    )
+    `}</style>
+      <section className="timeOfTask">
+        <h3>Wann ?</h3>
+        <div className="timeOfTask-list">
+          {desiredTime.map((t) => (
+            <button
+              key={t.id}
+              className={active === t.id ? 'time-btn active' : 'time-btn'}
+              onClick={() => setActive(t.id)}
+            >
+              <div className="timeIcon">{t.icon}</div>
+              <span>{t.label}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+    </>
+  )
 }
 
 export default Time

@@ -1,20 +1,20 @@
-import { useState } from "react"
-import { Utensils, Footprints, HeartPlus, Scissors } from "lucide-react"
+import { useState } from 'react'
+import { Utensils, Footprints, HeartPlus, Scissors } from 'lucide-react'
 
+function Category() {
+  const [active, setActive] = useState('feeding')
 
-function Category(){
-    const [active, setActive] = useState("feeding");
+  const categories = [
+    { id: 'feeding', lebel: 'Fütern', icon: <Utensils></Utensils> },
+    { id: 'walking', lebel: 'Gassie gehen', icon: <Footprints></Footprints> },
+    { id: 'medical', lebel: 'Medical', icon: <HeartPlus></HeartPlus> },
+    { id: 'grooming', lebel: 'Kemen', icon: <Scissors></Scissors> },
+  ]
 
-    const categories = [
-        {id: "feeding", lebel: "Fütern", icon: <Utensils></Utensils>},
-        {id: "walking", lebel: "Gassie gehen", icon: <Footprints></Footprints>},
-        {id: "medical", lebel: "Medical", icon: <HeartPlus></HeartPlus>},
-        {id: "grooming", lebel: "Kemen", icon: <Scissors></Scissors>},
-    ]
-
-    return (
-        <>
-        <style>{`
+  return (
+    <>
+      <style>
+        {`
             .category h3 {
                 margin-bottom: 1rem;
             }
@@ -69,34 +69,27 @@ function Category(){
                 background: #010214;
                 color: white;
             } `}
-            </style>
+      </style>
 
-            <section className="category">
-                <h3>Was kommt als nächstes ?</h3>
-                <div className="category-grid">
-                    {categories.map((cat)=>(
-                        <button
-                            key={cat.id}
-                            className={
-                                active === cat.id
-                                ? "category-card active"
-                                : "category-card"
-                            }
-                            onClick={()=> setActive(cat.id)}
-                        >
-                            <div className="category-icon">
-                                {cat.icon}
-                            </div>
-                            <span>{cat.lebel}</span>
-                        </button>
-                    ))}
-                </div>
-
-            </section>
-        </>
-    )
-
+      <section className="category">
+        <h3>Was kommt als nächstes ?</h3>
+        <div className="category-grid">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              className={
+                active === cat.id ? 'category-card active' : 'category-card'
+              }
+              onClick={() => setActive(cat.id)}
+            >
+              <div className="category-icon">{cat.icon}</div>
+              <span>{cat.lebel}</span>
+            </button>
+          ))}
+        </div>
+      </section>
+    </>
+  )
 }
 
 export default Category
-
