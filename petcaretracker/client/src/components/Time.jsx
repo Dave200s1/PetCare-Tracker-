@@ -1,8 +1,5 @@
 import { useState } from 'react'
 import { Clock, Moon, Calendar1 } from 'lucide-react'
-//import { Calendar } from 'jsuites/react'
-//import 'jsuites/dist/jsuites.css'
-//import { useRef } from 'react'
 
 function Time() {
   const [active, setActive] = useState('tonight')
@@ -40,7 +37,7 @@ function Time() {
         }
 
         .time-btn.active {
-          background: #3b82f6;;
+          background: #3b82f6;
           color: white;
         }
 
