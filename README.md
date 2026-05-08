@@ -65,6 +65,7 @@ Nutzer:innen können:
 - Frontend: React
 - Backend: Node.js mit Express
 - Datenbank: MongoDB
+- ORM: TypeORM
 
 ---
 ## 🚀 Installation
