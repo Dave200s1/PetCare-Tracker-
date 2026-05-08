@@ -1,12 +1,9 @@
-import {House,SquarePlus, Settings} from 'lucide-react'
+import { House, SquarePlus, Settings, Camera } from 'lucide-react'
 
-
-
-function Navigation ({setPage}){
-
-    return(
-        <>
-     <style>{`
+function Navigation({ setPage }) {
+  return (
+    <>
+      <style>{`
         .desktop-nav {
           display: flex;
           justify-content: space-between;
@@ -15,7 +12,7 @@ function Navigation ({setPage}){
         .mobile-bottom-nav {
           display: none;
         }
-  
+
         @media (max-width: 768px) {
           .desktop-nav {
             display: none;
@@ -54,46 +51,110 @@ function Navigation ({setPage}){
         }
 
       `}</style>
-        <nav className="desktop-nav container-fluid">
-            <ul>
-                <li><strong>Pet tracker</strong></li>
-            </ul>
-            <ul>
-                <li><a href="#" onClick={()=> setPage("dashboard")} className="pico-color-indigo-600">Start</a></li>
-                <li><a href="#" onClick={()=> setPage("reminder")} className="pico-color-indigo-600">Neu</a></li>
-                <li><a href="#" onClick={()=> setPage("settings")} className="pico-color-indigo-600">Einstellungen</a></li>
-            </ul>
-        </nav>
-      
+      <nav className="desktop-nav container-fluid">
+        <ul>
+          <li>
+            <strong>Pet tracker</strong>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a
+              href="#"
+              onClick={() => setPage('dashboard')}
+              className="pico-color-indigo-600"
+            >
+              Start
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={() => setPage('reminder')}
+              className="pico-color-indigo-600"
+            >
+              Neu
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={() => setPage('snaptshot')}
+              className="pico-color-indigo-600"
+            >
+              Foto
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              onClick={() => setPage('settings')}
+              className="pico-color-indigo-600"
+            >
+              Einstellungen
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-        
-        <nav className="mobile-bottom-nav">
-            <ul>
-                <li>
-                    <House></House>
-                    <a href="#" onClick={(e)=>{
-                        e.preventDefault();
-                        setPage("dashboard");
-                    }} className="pico-color-indigo-600">Start</a>
-                </li>
-                <li>
-                    <SquarePlus></SquarePlus>
-                    <a href="#" onClick={(e)=>{
-                        e.preventDefault();
-                        setPage("reminder");
-                    }} className="pico-color-indigo-600">Neu</a>
-                </li>
-                <li>
-                    <Settings></Settings>
-                    <a href="#" onClick={(e)=>{
-                        e.preventDefault();
-                        setPage("settings");
-                    }} className="pico-color-indigo-600">Einstellungen</a>
-                </li>
-            </ul>
-        </nav>
-        </>
-    )
+      <nav className="mobile-bottom-nav">
+        <ul>
+          <li>
+            <House></House>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                setPage('dashboard')
+              }}
+              className="pico-color-indigo-600"
+            >
+              Start
+            </a>
+          </li>
+          <li>
+            <SquarePlus></SquarePlus>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                setPage('reminder')
+              }}
+              className="pico-color-indigo-600"
+            >
+              Neu
+            </a>
+          </li>
+          <li>
+            <Camera></Camera>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                setPage('snaptshot')
+              }}
+              className="pico-color-indigo-600"
+            >
+              Foto
+            </a>
+          </li>
+          <li>
+            <Settings></Settings>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                setPage('settings')
+              }}
+              className="pico-color-indigo-600"
+            >
+              Einstellungen
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </>
+  )
 }
 
 export default Navigation
