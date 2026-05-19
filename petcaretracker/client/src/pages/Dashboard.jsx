@@ -8,7 +8,6 @@ function Dashboard() {
       <main>
         <FilterHaustiere></FilterHaustiere>
         <TastFeed></TastFeed>
-        <Map></Map>
       </main>
     </>
   )

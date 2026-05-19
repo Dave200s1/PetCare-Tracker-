@@ -29,5 +29,5 @@ AppDataSource.initialize()
     })
   })
   .catch((err) => {
-    console.error('DB connection failed:', err)
+    console.error('DB Verbindung fehlgeschlagen:', err)
   })
