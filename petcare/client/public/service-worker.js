@@ -1,64 +1,64 @@
-const CACHE_NAME = 'pet-cate-cache-v2'
+const CACHE_NAME = 'pet-care-cache-v3'
 const API_CACHE = 'api-cache-v1'
 
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/meta_data/pets.json',
-  '/imgs/dog1.webp',
-]
+const urlsToCache = ['/', '/index.html', '/manifest.json']
 
-// Installation
+// INSTALL
 self.addEventListener('install', (event) => {
-  console.log('Server Worker installiert')
+  console.log('Service Worker installiert')
 
   event.waitUntil(
-    caches.open(CACHE_NAME).then(async (cache) => {
-      for (const url of urlsToCache) {
-        try {
-          await cache.add(url)
-        } catch (err) {
-          console.warn('Cache fehlgeschlagen: ', url, err)
-        }
-      }
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(urlsToCache)
     })
   )
 })
 
-// Fetch (Hybrid-Caching)
 self.addEventListener('fetch', (event) => {
-  if (
-    event.request.method === 'GET' &&
-    event.request.url.includes('/api/task')
-  ) {
+  const url = event.request.url
+
+  // API: Network First
+  if (url.includes('/api/task')) {
     event.respondWith(
-      // ZUERST Netzwerk bzw. Network First
       fetch(event.request)
-        .then((networkResponse) => {
-          // Antwort im Cache speichern
-          return caches.open(API_CACHE).then((cache) => {
-            cache.put(event.request, networkResponse.clone())
-
-            return networkResponse
-          })
+        .then(async (res) => {
+          const cache = await caches.open(API_CACHE)
+          cache.put(event.request, res.clone())
+          return res
         })
-
-        // Falls im Offline-Mode, Cache verwenden
         .catch(async () => {
-          console.log('Offline, Cache wird verwendet')
-          const cachedResponse = await caches.match(event.request)
-
-          return cachedResponse
+          const cache = await caches.open(API_CACHE)
+          return cache.match(event.request)
         })
     )
     return
   }
 
-  // Static Files , Cache First Strategie
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request)
-    })
-  )
+  // Static files (including JSON): Cache First, then Network
+  if (event.request.method === 'GET') {
+    event.respondWith(
+      caches.match(event.request).then((cached) => {
+        // Return cached response if available
+        if (cached) {
+          return cached
+        }
+        // Otherwise fetch from network
+        return fetch(event.request)
+          .then((networkResponse) => {
+            // Optionally cache the newly fetched file
+            if (networkResponse && networkResponse.status === 200) {
+              const cacheCopy = networkResponse.clone()
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(event.request, cacheCopy)
+              })
+            }
+            return networkResponse
+          })
+          .catch(() => {
+            // Offline fallback: could return a custom offline page or empty response
+            return new Response('Offline', { status: 503 })
+          })
+      })
+    )
+  }
 })

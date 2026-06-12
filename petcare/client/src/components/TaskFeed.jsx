@@ -9,15 +9,21 @@ function TastFeed() {
 
   useEffect(() => {
     // Tasks vom Backend laden
-    fetch('http://localhost:8080/api/task')
+    fetch('/api/task')
       .then((res) => res.json())
       .then((data) => {
-        setTasks(data)
+    // Prüfen ob API wirklich ein Array liefert
+	if (Array.isArray(data)) {
+	    setTasks(data)
+	  } else {
+	    console.error('API liefert kein Array:', data)
+	    setTasks([])
+	  }
 
-        setTimeout(() => {
-          setIsLoading(false)
-        }, 1500)
-      })
+	  setTimeout(() => {
+	    setIsLoading(false)
+	  }, 1500)
+	})
       .catch((err) => {
         console.error('Fehler beim Laden der Tasks:', err)
         setIsLoading(false)

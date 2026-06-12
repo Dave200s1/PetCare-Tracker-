@@ -6,13 +6,16 @@ const cors = require('cors')
 
 const app = express()
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 80
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
   res.send('Hi, du bist im root')
 })
-app.use(cors())
+
+app.use(cors({
+  origin: '*'
+}))
 app.use(express.json())
 
 app.use('/api/task', taskRoutes)
