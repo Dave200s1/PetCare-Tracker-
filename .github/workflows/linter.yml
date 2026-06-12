@@ -12,22 +12,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: List root directory
-        run: ls -la
-
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22   # LTS (active until 2027)
 
       - name: Lint client
         run: |
-          cd client || exit 1
+          cd petcare/client || exit 1
           npm install
           npm run lint
 
       - name: Lint server
         run: |
-          cd server || exit 1
+          cd petcare/server || exit 1
           npm install
           npm run lint
