@@ -19,7 +19,7 @@ jobs:
 
       # Lint client
       - name: Client install
-        run: npm ci
+        run: npm install
         working-directory: ./client
 
       - name: Client lint
@@ -28,7 +28,7 @@ jobs:
 
       # Lint server
       - name: Server install
-        run: npm ci
+        run: npm install
         working-directory: ./server
 
       - name: Server lint
