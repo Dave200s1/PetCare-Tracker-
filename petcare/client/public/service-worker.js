@@ -19,7 +19,7 @@ self.addEventListener('install', (event) => {
         try {
           await cache.add(url)
         } catch (err) {
-          console.warn('Cache fehlgeschlagen: ', url)
+          console.warn('Cache fehlgeschlagen: ', url, err)
         }
       }
     })
