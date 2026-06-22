@@ -1,3 +1,4 @@
+/* global clients, self, caches, fetch, console, Notification */
 const CACHE_NAME = 'pet-cate-cache-v4'
 const API_CACHE = 'api-cache-v3'
 
