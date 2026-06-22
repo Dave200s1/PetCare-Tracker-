@@ -2,6 +2,7 @@ require('dotenv').config({ path: '../.env' })
 const express = require('express')
 const AppDataSource = require('./data-source')
 const taskRoutes = require('./routes/tasks.js')
+const petRoutes = require('./routes/pets.js')
 const cors = require('cors')
 
 const app = express()
@@ -19,7 +20,7 @@ app.use(cors({
 app.use(express.json())
 
 app.use('/api/task', taskRoutes)
-
+app.use('/api/pet', petRoutes)
 AppDataSource.initialize()
   .then(() => {
     console.log('MongoDB-Server verbunden!')

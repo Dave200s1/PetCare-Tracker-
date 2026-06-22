@@ -23,7 +23,7 @@ module.exports = new EntitySchema({
     },
 
     date: {
-      type: 'date',
+      type: 'string',
     },
 
     petId: {
