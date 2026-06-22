@@ -1,11 +1,12 @@
 import { useState } from 'react'
+import Camera from '../components/Camera'
 
 function ComponentName() {
   const [state, setState] = useState(null)
 
   return (
     <>
-      <div className="container">// content</div>
+      <Camera></Camera>
     </>
   )
 }

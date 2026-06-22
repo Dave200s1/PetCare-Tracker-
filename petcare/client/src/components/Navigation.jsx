@@ -1,4 +1,11 @@
-import { House, SquarePlus, Settings, Camera } from 'lucide-react'
+import {
+  House,
+  SquarePlus,
+  Settings,
+  Camera,
+  FolderOpen,
+  Album,
+} from 'lucide-react'
 
 function Navigation({ setPage }) {
   return (
@@ -25,7 +32,7 @@ function Navigation({ setPage }) {
             width: 100%;
             background-color: var(--pico-background-color);
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            padding: 0.5rem 0;
+            padding: 0.2rem 0 0.3rem;
             z-index: 1000;
           }
           .mobile-bottom-nav ul {
@@ -34,6 +41,7 @@ function Navigation({ setPage }) {
             list-style: none;
             margin: 0;
             padding: 0;
+            gap: 0.1rem;
           }
          .mobile-bottom-nav li{
             display: flex;
@@ -41,13 +49,20 @@ function Navigation({ setPage }) {
             align-items: center;
             justify-content: center;
             text-align: centre;
-            gap: 0.25rem;
+            gap: 0.15rem;
          }
 
         .mobile-bottom-nav a {
             display: block;
-            padding: 0.75rem;
+            padding: 0.1rem 0.25rem;
+            font-size: 0.6rem;
             text-align: center;
+            text-decoration: none;
+        }
+
+      .mobile-bottom-nav svg {
+            width: 20px;
+            height: 20px;
         }
 
       `}</style>
@@ -88,6 +103,15 @@ function Navigation({ setPage }) {
           <li>
             <a
               href="#"
+              onClick={() => setPage('album')}
+              className="pico-color-indigo-600"
+            >
+              Album
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
               onClick={() => setPage('settings')}
               className="pico-color-indigo-600"
             >
@@ -100,7 +124,7 @@ function Navigation({ setPage }) {
       <nav className="mobile-bottom-nav">
         <ul>
           <li>
-            <House></House>
+            <House size={20}></House>
             <a
               href="#"
               onClick={(e) => {
@@ -113,7 +137,7 @@ function Navigation({ setPage }) {
             </a>
           </li>
           <li>
-            <SquarePlus></SquarePlus>
+            <SquarePlus size={20}></SquarePlus>
             <a
               href="#"
               onClick={(e) => {
@@ -126,7 +150,7 @@ function Navigation({ setPage }) {
             </a>
           </li>
           <li>
-            <Camera></Camera>
+            <Camera size={20}></Camera>
             <a
               href="#"
               onClick={(e) => {
@@ -139,7 +163,20 @@ function Navigation({ setPage }) {
             </a>
           </li>
           <li>
-            <Settings></Settings>
+            <Album size={20}></Album>
+            <a
+              href="#"
+              onClick={(e) => {
+                e.preventDefault()
+                setPage('album')
+              }}
+              className="pico-color-indigo-600"
+            >
+              Album
+            </a>
+          </li>
+          <li>
+            <Settings size={20}></Settings>
             <a
               href="#"
               onClick={(e) => {

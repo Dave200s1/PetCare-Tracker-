@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",
+    "axios": "^1.18.0",
     "jsuites": "^6.3.4",
     "leaflet": "^1.9.4",
     "lucide-react": "^1.3.0",
