@@ -10,56 +10,55 @@ import { addToQueue } from '../services/offlineQueue'
 
 function TaskFeed() {
   const [tasks, setTasks] = useState([])
-  const [pets, setPets] = useState([])
+  const [pets, setPets] = useState([])          // für Pet‑Namen
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('all')
   const [error, setError] = useState(null)
 
+  // Hilfsfunktion: Pet‑Name anhand der ID ermitteln
   const getPetName = (petId) => {
     if (!petId) return 'Kein Haustier'
     const pet = pets.find(p => p._id === petId || p.id === petId)
-    return pet ? pet.name : petId
+    return pet ? pet.name : petId   // fallback: ID anzeigen
   }
 
+  // Daten laden (Tasks + Pets)
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // 1. Tasks laden (relativer Pfad)
         const taskRes = await fetch('/api/task')
         if (!taskRes.ok) throw new Error(`HTTP ${taskRes.status}`)
         const taskData = await taskRes.json()
-        console.log('Tasks geladen (roh):', taskData)
+        console.log('Tasks geladen:', taskData)
 
-        // ID aus _id übernehmen
-        const tasksWithId = taskData.map(task => ({
-          ...task,
-          id: task.id || task._id
-        }))
-
-        // Duplikate entfernen
-        const uniqueTasks = tasksWithId.filter((task, index, self) =>
-          index === self.findIndex(t => t.id === task.id)
-        )
-        setTasks(uniqueTasks)
-        console.log('Tasks mit ID:', uniqueTasks.map(t => ({ id: t.id, title: t.title })))
-
-        // Pets laden (analog)
+        // 2. Pets laden (relativer Pfad)
         let petData = []
         try {
           const petRes = await fetch('/api/pet')
           if (petRes.ok) {
             petData = await petRes.json()
-            petData = petData.map(pet => ({ ...pet, id: pet.id || pet._id }))
           } else {
+            // Fallback: lokale JSON-Datei (für den Fall, dass /api/pet nicht existiert)
             const localRes = await fetch('/meta_data/pets.json')
             if (localRes.ok) {
               const json = await localRes.json()
-              petData = (json.pets || []).map(pet => ({ ...pet, id: pet.id || pet._id }))
+              petData = json.pets || []
             }
           }
         } catch (petErr) {
-          console.warn('Pets konnten nicht geladen werden:', petErr)
+          console.warn('Pets konnten nicht geladen werden, verwende Fallback:', petErr)
+          // Fallback: leeres Array
         }
         setPets(petData)
+
+        // Duplikate aus Tasks entfernen (falls nötig)
+        const unique = Array.isArray(taskData)
+          ? taskData.filter((task, index, self) =>
+              index === self.findIndex(t => t.id === task.id)
+            )
+          : []
+        setTasks(unique)
         setError(null)
       } catch (err) {
         console.error('Fehler beim Laden:', err)
@@ -71,6 +70,7 @@ function TaskFeed() {
     fetchData()
   }, [])
 
+  // Icons (unverändert)
   const getTaskIcon = (title) => {
     const lower = title.toLowerCase()
     if (lower.includes('gassie') || lower.includes('spazier'))
@@ -82,6 +82,7 @@ function TaskFeed() {
     return <ClipboardList size={18} color="#6b7280" />
   }
 
+  // Datumsformatierung (wie gehabt)
   const formatDate = (dateStr) => {
     if (!dateStr) return ''
     const d = new Date(dateStr)
@@ -112,11 +113,8 @@ function TaskFeed() {
     return datePart
   }
 
+  // --- API-Requests mit Offline-Queue (relative Pfade) ---
   const updateTask = async (taskId, updatedFields) => {
-    if (!taskId) {
-      console.error('updateTask: Keine gültige Task-ID')
-      return
-    }
     console.log(`Update Task ${taskId} mit:`, updatedFields)
 
     if (navigator.onLine) {
@@ -130,6 +128,7 @@ function TaskFeed() {
           const errText = await res.text()
           throw new Error(`Update fehlgeschlagen: ${res.status} ${errText}`)
         }
+        // Lokalen State aktualisieren (ohne auf die Antwort zu warten)
         setTasks((prev) =>
           prev.map((t) => (t.id === taskId ? { ...t, ...updatedFields } : t))
         )
@@ -139,6 +138,7 @@ function TaskFeed() {
         alert('Fehler beim Aktualisieren des Tasks.')
       }
     } else {
+      // Offline: in Queue legen
       await addToQueue('PUT', `/api/task/${taskId}`, updatedFields)
       setTasks((prev) =>
         prev.map((t) => (t.id === taskId ? { ...t, ...updatedFields } : t))
@@ -147,24 +147,7 @@ function TaskFeed() {
     }
   }
 
-
   const deleteTask = async (taskId) => {
-    console.log('deleteTask aufgerufen mit taskId:', taskId)
-
-    if (!taskId) {
-      console.error('deleteTask: Keine gültige Task-ID')
-      return
-    }
-
-    // Prüfen, ob die ID im aktuellen State existiert
-    const taskExists = tasks.some(t => t.id === taskId)
-    console.log('taskExists:', taskExists, 'aktuelle IDs:', tasks.map(t => t.id))
-
-    if (!taskExists) {
-      console.warn('Die zu löschende Task-ID wurde im State nicht gefunden.')
-      return
-    }
-
     if (!window.confirm('Task wirklich löschen?')) return
 
     if (navigator.onLine) {
@@ -176,14 +159,8 @@ function TaskFeed() {
           const errText = await res.text()
           throw new Error(`Löschen fehlgeschlagen: ${res.status} ${errText}`)
         }
-
-        // Erfolgreich gelöscht -> State filtern
-        setTasks((prev) => {
-          const filtered = prev.filter((t) => t.id !== taskId)
-          console.log('Anzahl Tasks nach Filter:', filtered.length)
-          return filtered
-        })
-        console.log('Task gelöscht (Frontend-Update)')
+        setTasks((prev) => prev.filter((t) => t.id !== taskId))
+        console.log('Task gelöscht')
       } catch (err) {
         console.error('Delete Error:', err)
         alert('Fehler beim Löschen des Tasks.')
@@ -200,6 +177,12 @@ function TaskFeed() {
     updateTask(task.id, { ...task, completed })
   }
 
+  const handleDateTimeChange = (task, e) => {
+    const newDateTime = e.target.value
+    updateTask(task.id, { ...task, date: newDateTime })
+  }
+
+  // Filter
   const filteredTasks = tasks.filter((task) => {
     if (filter === 'all') return true
     return task.category === filter

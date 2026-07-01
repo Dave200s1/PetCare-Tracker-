@@ -50,20 +50,23 @@ exports.updateTask = async (req, res) => {
 //Delete
 exports.deleteTask = async (req, res) => {
   try {
-    const id = req.params.id
+    const id = req.params.id;
 
-    const task = await taskRepo.findOneBy({
-      _id: new ObjectId(id),
-    })
+
+    const task = await taskRepo.findOne({
+      where: { _id: new ObjectId(id) }
+    });
+
     if (!task) {
-      return res.status(404).json({ message: 'Task bereits entfernt!' })
+      return res.status(404).json({ message: 'Task nicht gefunden' });
     }
 
-    await taskRepo.delete({
-      _id: new ObjectId(id),
-    })
-    res.json({ message: 'Task wurde erfolgreich entfernt' })
+    // Task mit remove() löschen (statt delete)
+    await taskRepo.remove(task);
+
+    res.json({ message: 'Task wurde erfolgreich entfernt' });
   } catch (err) {
-    res.status(500).json({ error: err.message })
+    console.error('Fehler beim Löschen:', err);
+    res.status(500).json({ error: err.message });
   }
-}
+};
