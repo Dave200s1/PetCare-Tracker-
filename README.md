@@ -29,7 +29,7 @@ Die Anwendung erinnert über Benachrichtigungen an anstehende Aufgaben und ist s
     <tr>
         <td><img src="Pic1.png" alt="Dashboard" width="300"></td>
         <td><img src="Pic2.png" alt="Aufgaben" width="300"></td>
-        <td><img src="Pic3.png" alt="Benachrichtigung" width="300"></td>
+        <td><img src="Pic3.PNG" alt="Benachrichtigung" width="300"></td>
     <tr>
 <table>
 
