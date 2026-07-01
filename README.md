@@ -1,13 +1,24 @@
-# 🐶 Pet Care Tracker
+# Pet Care Tracker
 
 Eine mobile Progressive Web App (PWA), die Haustierbesitzer:innen dabei unterstützt, die Pflege ihrer Tiere zu organisieren.
 
-# Das folgende Projekt befindet sich in der Bearbeitung !
+<p align="center">
+  <a href="https://github.com/Dave200s1/PetCare-Tracker-/AppLogo.png">
+    <img alt="PetCare Logo" height="150" src="AppLogo.png">
+  </a>
+</p>
+<br>
+<p align="center">
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-darkblue">
+  <img alt="Language" src="https://img.shields.io/badge/techstack-React-lightblue)">
+  <br>
+  Erstellt mit <b>React</b> und <b>MongoDB</b> in <b>JavaScript</b>.
+</p>
+<br>
 
-![npm bundle size (version)](https://img.shields.io/badge/version-0.0.1-darkblue)  ![npm bundle size (version)](https://img.shields.io/badge/techstack-React-lightblue)
 ---
 
-## 📌 Überblick
+## Überblick
 
 Pet Care Tracker ist eine Webanwendung, die Nutzer:innen bei der Organisation von täglichen und langfristigen Aufgaben rund um ihre Haustiere unterstützt. Es können Haustiere angelegt sowie Fütterungszeiten, Tierarzttermine und Impfungen geplant werden.
 
@@ -19,19 +30,19 @@ Die Anwendung erinnert über Benachrichtigungen an anstehende Aufgaben und ist s
 
 ![Alt text](Pic2.png "Optional title")
 
-## ✨ Funktionen
+## Funktionen
 
-- 🐾 Haustiere anlegen und verwalten
-- ⏰ Fütterungszeiten planen
-- 💉 Impfungen und Tierarzttermine verwalten
-- 🔔 Erinnerungen für anstehende Aufgaben erhalten
-- 📶 Offline-Funktionalität mit lokaler Datenspeicherung
-- ☁️ Synchronisation mit einer Datenbank
-- 📱 Installierbar als mobile App (PWA)
+- Anlegen und Verwalten von Haustieren
+- Planung von Fütterungszeiten
+- Verwaltung von Impfungen und Tierarztterminen
+- Erinnerungen für anstehende Aufgaben
+- Offline-Funktionalität mit lokaler Datenspeicherung
+- Synchronisation mit einer Datenbank bei Online-Verbindung
+- Installierbar als mobile App (PWA)
 
 ---
 
-## 🎯 Ziel des Projekts
+## Ziel des Projekts
 
 Ziel des Projekts ist die Entwicklung einer mobilfreundlichen Webanwendung, die zentrale Konzepte von Progressive Web Apps demonstriert, darunter:
 
@@ -42,33 +53,32 @@ Ziel des Projekts ist die Entwicklung einer mobilfreundlichen Webanwendung, die 
 
 ---
 
-## 🧩 Kernfunktionalität
+##  Kernfunktionalität
 
-Nutzer:innen können:
-- mehrere Haustiere anlegen und verwalten
-- Erinnerungen für verschiedene Aufgaben erstellen
-- anstehende Termine und Aufgaben einsehen
-- Benachrichtigungen für wichtige Aktivitäten erhalten
+Die Anwendung bietet Nutzern folgende Kernfunktionen:
 
----
-
-## 📍 Optionale Funktionen
-
-- 🗺️ Anzeige von Tierarztpraxen in der Nähe (Standortbasiert)
-- 🐕 Tracking von Spaziergängen mittels Geolocation
-- 📊 Erweiterung um einfaches Health-Tracking
+- Verwaltung mehrerer Haustiere
+- Erstellung und Verwaltung von Erinnerungen für verschiedene Aufgabentypen
+- Übersicht über anstehende Termine und Aufgaben
+- Empfang von Benachrichtigungen für wichtige Aktivitäten
+- Standortbasierte Anzeige von Tierarztpraxen in der Nähe
 
 ---
 
-## 🛠️ Technologie-Stack
+
+
+---
+
+## Technologie-Stack
 
 - Frontend: React
 - Backend: Node.js mit Express
 - Datenbank: MongoDB
 - ORM: TypeORM
+- API: LatLng
 
 ---
-## 🚀 Installation
+## Installation
 
 ```bash
 # Clone Repository
