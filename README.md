@@ -25,10 +25,12 @@ Pet Care Tracker ist eine Webanwendung, die Nutzer:innen bei der Organisation vo
 Die Anwendung erinnert über Benachrichtigungen an anstehende Aufgaben und ist so konzipiert, dass sie auch offline funktioniert. Daten werden lokal gespeichert und bei bestehender Internetverbindung mit einer Datenbank synchronisiert.
 
 ---
-
-![Alt text](Pic1.png "Optional title")
-
-![Alt text](Pic2.png "Optional title")
+<table>
+    <tr>
+        <td><img src="Pic1.png" alt="Dashboard" width="300"></td>
+        <td><img src="Pic2.png" alt="Aufgaben" width="300"></td>
+    <tr>
+<table>
 
 ## Funktionen
 
