@@ -65,10 +65,6 @@ Die Anwendung bietet Nutzern folgende Kernfunktionen:
 
 ---
 
-
-
----
-
 ## Technologie-Stack
 
 - Frontend: React
