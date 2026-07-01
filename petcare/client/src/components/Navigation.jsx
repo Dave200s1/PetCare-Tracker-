@@ -124,7 +124,7 @@ function Navigation({ setPage }) {
       <nav className="mobile-bottom-nav">
         <ul>
           <li>
-            <House size={20}></House>
+            <House size={30}></House>
             <a
               href="#"
               onClick={(e) => {
@@ -137,7 +137,7 @@ function Navigation({ setPage }) {
             </a>
           </li>
           <li>
-            <SquarePlus size={20}></SquarePlus>
+            <SquarePlus size={30}></SquarePlus>
             <a
               href="#"
               onClick={(e) => {
@@ -150,7 +150,7 @@ function Navigation({ setPage }) {
             </a>
           </li>
           <li>
-            <Camera size={20}></Camera>
+            <Camera size={30}></Camera>
             <a
               href="#"
               onClick={(e) => {
@@ -163,7 +163,7 @@ function Navigation({ setPage }) {
             </a>
           </li>
           <li>
-            <Album size={20}></Album>
+            <Album size={30}></Album>
             <a
               href="#"
               onClick={(e) => {
@@ -176,7 +176,7 @@ function Navigation({ setPage }) {
             </a>
           </li>
           <li>
-            <Settings size={20}></Settings>
+            <Settings size={30}></Settings>
             <a
               href="#"
               onClick={(e) => {
