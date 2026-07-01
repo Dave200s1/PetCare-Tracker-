@@ -32,7 +32,7 @@ function Navigation({ setPage }) {
             width: 100%;
             background-color: var(--pico-background-color);
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            padding: 0.2rem 0 0.3rem;
+            padding: 0.5rem 0 0.6rem;
             z-index: 1000;
           }
           .mobile-bottom-nav ul {
@@ -41,7 +41,7 @@ function Navigation({ setPage }) {
             list-style: none;
             margin: 0;
             padding: 0;
-            gap: 0.1rem;
+            gap: 0.3rem;
           }
          .mobile-bottom-nav li{
             display: flex;
@@ -49,20 +49,21 @@ function Navigation({ setPage }) {
             align-items: center;
             justify-content: center;
             text-align: centre;
-            gap: 0.15rem;
+            gap: 0.2rem;
+            flex: 1;
          }
 
         .mobile-bottom-nav a {
             display: block;
             padding: 0.1rem 0.25rem;
-            font-size: 0.6rem;
+            font-size: 0.8rem;
             text-align: center;
             text-decoration: none;
         }
 
       .mobile-bottom-nav svg {
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
         }
 
       `}</style>
