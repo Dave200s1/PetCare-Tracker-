@@ -13,6 +13,7 @@ function TaskFeed() {
   const [pets, setPets] = useState([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('all')
+  const [statusFilter, setStatusFilter] = useState('all') // 'all', 'open', 'done'
   const [error, setError] = useState(null)
 
   const getPetName = (petId) => {
@@ -29,20 +30,17 @@ function TaskFeed() {
         const taskData = await taskRes.json()
         console.log('Tasks geladen (roh):', taskData)
 
-        // ID aus _id übernehmen
         const tasksWithId = taskData.map(task => ({
           ...task,
           id: task.id || task._id
         }))
 
-        // Duplikate entfernen
         const uniqueTasks = tasksWithId.filter((task, index, self) =>
           index === self.findIndex(t => t.id === task.id)
         )
         setTasks(uniqueTasks)
         console.log('Tasks mit ID:', uniqueTasks.map(t => ({ id: t.id, title: t.title })))
 
-        // Pets laden (analog)
         let petData = []
         try {
           const petRes = await fetch('/api/pet')
@@ -147,7 +145,6 @@ function TaskFeed() {
     }
   }
 
-
   const deleteTask = async (taskId) => {
     console.log('deleteTask aufgerufen mit taskId:', taskId)
 
@@ -156,7 +153,6 @@ function TaskFeed() {
       return
     }
 
-    // Prüfen, ob die ID im aktuellen State existiert
     const taskExists = tasks.some(t => t.id === taskId)
     console.log('taskExists:', taskExists, 'aktuelle IDs:', tasks.map(t => t.id))
 
@@ -177,7 +173,6 @@ function TaskFeed() {
           throw new Error(`Löschen fehlgeschlagen: ${res.status} ${errText}`)
         }
 
-        // Erfolgreich gelöscht -> State filtern
         setTasks((prev) => {
           const filtered = prev.filter((t) => t.id !== taskId)
           console.log('Anzahl Tasks nach Filter:', filtered.length)
@@ -197,32 +192,48 @@ function TaskFeed() {
 
   const handleCompletedChange = (task, e) => {
     const completed = e.target.checked
-    updateTask(task.id, { ...task, completed })
+    updateTask(task.id, { completed })
   }
 
+  // Gefilterte Tasks mit Kategorie- und Status-Filter
   const filteredTasks = tasks.filter((task) => {
-    if (filter === 'all') return true
-    return task.category === filter
+    // Kategorie-Filter
+    if (filter !== 'all' && task.category !== filter) return false
+
+    // Status-Filter
+    if (statusFilter === 'open' && task.completed) return false
+    if (statusFilter === 'done' && !task.completed) return false
+
+    return true
   })
+
+  // Zählung für die Status-Anzeige
+  const openCount = tasks.filter(t => !t.completed).length
+  const doneCount = tasks.filter(t => t.completed).length
 
   if (loading) {
     return <div style={{ padding: '2rem', textAlign: 'center' }}>Lade Aufgaben...</div>
   }
-
-  if (error) {
-    return (
-      <div style={{ padding: '2rem', textAlign: 'center', color: 'red' }}>
-        Fehler beim Laden: {error}
-      </div>
-    )
-  }
+if (error) {
+  return (
+    <div style={{ padding: '2rem', textAlign: 'center', color: 'red' }}>
+      Fehler beim Laden: {error}
+    </div>
+  )
+}
 
   return (
     <>
       <style>{`
         .task-feed { max-width: 600px; margin: 0 auto; padding: 1rem; }
         .task-feed h3 { margin-bottom: 0.5rem; }
-        .filter-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+
+        .filter-bar {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 0.8rem;
+          flex-wrap: wrap;
+        }
         .filter-bar button {
           padding: 0.3rem 1.2rem;
           border: 1px solid #d1d5db;
@@ -232,6 +243,7 @@ function TaskFeed() {
           cursor: pointer;
           font-weight: 500;
           transition: all 0.2s;
+          font-size: 0.85rem;
         }
         .filter-bar button:hover { background: #e5e7eb; }
         .filter-bar button.active {
@@ -239,6 +251,41 @@ function TaskFeed() {
           color: white;
           border-color: #3b82f6;
         }
+
+        .status-filter-bar {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+          border-bottom: 1px solid #e5e7eb;
+          padding-bottom: 0.8rem;
+        }
+        .status-filter-bar button {
+          padding: 0.25rem 1rem;
+          border: 1px solid #d1d5db;
+          border-radius: 999px;
+          background: #f9fafb;
+          color: #374151;
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.2s;
+          font-size: 0.8rem;
+        }
+        .status-filter-bar button:hover { background: #e5e7eb; }
+        .status-filter-bar button.active {
+          background: #000000;
+          color: white;
+          border-color: #6b7280;
+        }
+        .status-filter-bar button.active.open { background: #f59e0b; border-color: #f59e0b; }
+        .status-filter-bar button.active.done { background: #10b981; border-color: #10b981; }
+        .status-filter-bar .count-badge {
+          font-size: 0.7rem;
+          padding: 0.05rem 0.5rem;
+          border-radius: 999px;
+          margin-left: 0.2rem;
+        }
+
         .task-accordion {
           background: white;
           border-radius: 12px;
@@ -247,6 +294,14 @@ function TaskFeed() {
           overflow: hidden;
         }
         .task-accordion:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .task-accordion.completed-task {
+          opacity: 0.7;
+          background: #f9fafb;
+        }
+        .task-accordion.completed-task summary .task-title {
+          text-decoration: line-through;
+          color: #6b7280;
+        }
         .task-accordion summary {
           display: flex;
           align-items: center;
@@ -326,6 +381,31 @@ function TaskFeed() {
         <h3>
           Bevorstehende Tasks <small>({tasks.length} gesamt)</small>
         </h3>
+
+        {/* Status-Filter (Offen / Erledigt / Alle) */}
+        <div className="status-filter-bar">
+          <button
+            className={statusFilter === 'all' ? 'active' : ''}
+            onClick={() => setStatusFilter('all')}
+          >
+            Alle <span className="count-badge">{tasks.length}</span>
+          </button>
+          <button
+            className={`${statusFilter === 'open' ? 'active open' : ''}`}
+            onClick={() => setStatusFilter('open')}
+          >
+            Offen <span className="count-badge">{openCount}</span>
+          </button>
+          <button
+            className={`${statusFilter === 'done' ? 'active done' : ''}`}
+            onClick={() => setStatusFilter('done')}
+          >
+            Erledigt <span className="count-badge">{doneCount}</span>
+          </button>
+        </div>
+
+        {/* Kategorie-Filter */}
+        <h4>Kategorien</h4>
         <div className="filter-bar">
           <button className={filter === 'all' ? 'active' : ''} onClick={() => setFilter('all')}>Alle</button>
           <button className={filter === 'pflege' ? 'active' : ''} onClick={() => setFilter('pflege')}>Pflege</button>
@@ -336,10 +416,14 @@ function TaskFeed() {
         </div>
 
         {filteredTasks.length === 0 ? (
-          <p style={{ color: '#6b7280', textAlign: 'center' }}>Keine Tasks für den ausgewählten Filter.</p>
+          <p style={{ color: '#6b7280', textAlign: 'center', padding: '2rem 0' }}>
+            {statusFilter === 'open' && 'Keine offenen Tasks für den ausgewählten Filter.'}
+            {statusFilter === 'done' && 'Keine erledigten Tasks für den ausgewählten Filter.'}
+            {statusFilter === 'all' && 'Keine Tasks für den ausgewählten Filter.'}
+          </p>
         ) : (
           filteredTasks.map((task) => (
-            <details key={task.id} className="task-accordion">
+            <details key={task.id} className={`task-accordion ${task.completed ? 'completed-task' : ''}`}>
               <summary>
                 <span className="task-icon">{getTaskIcon(task.title)}</span>
                 <span className="task-info">
