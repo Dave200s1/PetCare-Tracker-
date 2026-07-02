@@ -140,3 +140,10 @@ npm install
 
 # Development server starten
 npm run dev
+```
+Acknowledgements
+
+This project uses icons from Flaticon.
+
+- Grooming icon created by <a href="https://www.flaticon.com/authors/freepik">Freepik</a> - licensed via <a href="https://www.flaticon.com/free-icons/grooming">Flaticon</a>.
+
