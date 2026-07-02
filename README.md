@@ -141,7 +141,7 @@ npm install
 # Development server starten
 npm run dev
 ```
-Acknowledgements
+### Acknowledgements
 
 This project uses icons from Flaticon.
 
