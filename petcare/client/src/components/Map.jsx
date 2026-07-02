@@ -104,6 +104,11 @@ function Map() {
     iconAnchor: [16, 32],
   })
 
+  const locationIcon = new L.Icon({
+    iconUrl: '/icons/standOrt.webp',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+  })
   return (
     <>
       <h3>Tierärzte in der Nähe</h3>
@@ -113,7 +118,7 @@ function Map() {
         style={{ height: '300px', borderRadius: '16px', marginBottom: '80px' }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={position}>
+        <Marker position={position} icon={locationIcon}>
           <Popup>Du bist hier</Popup>
         </Marker>
         {vets.map((vet) => (
